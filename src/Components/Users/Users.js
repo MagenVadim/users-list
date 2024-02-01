@@ -2,7 +2,8 @@ import React from 'react'
 import { Skeleton } from './Skeleton'
 import {User} from './User'
 
-function Users({ items, isLoading }) {
+function Users({ items, isLoading, searchValue }) {
+  
   return (
     <>
       <div className="search">
@@ -21,7 +22,9 @@ function Users({ items, isLoading }) {
             </div>
         ) :(
             <ul className="users-list">
-                <User />
+                {items.map((elem) =>
+                  <User key={elem.id} {...elem}/>
+                )}
             </ul>
         )
     }
