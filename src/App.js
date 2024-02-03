@@ -20,7 +20,7 @@ function App() {
   };
 
   const onClickSendInvites = ()=>{
-    
+    setSuccess(true)
   }
 
 
@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="App">
       { success ? (
-          <Success/>
+          <Success count={invites.length}/>
       ) : (
           <Users
             onChangeSearchValue={onChangeSearchValue} 
@@ -52,6 +52,7 @@ function App() {
             isLoading={isLoading}
             invites={invites}
             onClickInvite={onClickInvite}
+            onClickSendInvites={onClickSendInvites}
           />
       )}
     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Skeleton } from './Skeleton'
 import {User} from './User'
 
-function Users({ items, isLoading, searchValue, onChangeSearchValue, invites, onClickInvite }) {
+function Users({ items, isLoading, searchValue, onChangeSearchValue, invites, onClickInvite, onClickSendInvites }) {
   
   return (
     <>
@@ -35,9 +35,14 @@ function Users({ items, isLoading, searchValue, onChangeSearchValue, invites, on
                 )}
             </ul>
         )}
-        <button className="send-invite-btn">
-          Send an invitation
-        </button>
+        {
+          invites.length> 0 && (
+            <button className="send-invite-btn" onClick={onClickSendInvites}>
+              Send an invitation
+            </button>
+          )
+        }
+
     </>
   )
 }
