@@ -2,10 +2,8 @@ import React from 'react'
 import { Skeleton } from './Skeleton'
 import {User} from './User'
 
-function Users({ items, isLoading, searchValue, onChangeSearchValue }) {
+function Users({ items, isLoading, searchValue, onChangeSearchValue, invites, onClickInvite }) {
   
-  console.log(searchValue)
-
   return (
     <>
       <div className="search">
@@ -33,12 +31,13 @@ function Users({ items, isLoading, searchValue, onChangeSearchValue }) {
                   const fullName = (elem.first_name + elem.last_name).toLowerCase();
                   return fullName.includes(searchValue.toLowerCase()) || elem.email.toLowerCase().includes(searchValue.toLowerCase())
                 }).map((elem) =>
-                  <User key={elem.id} {...elem}/>
+                  <User onClickInvite={onClickInvite} isInvited={invites.includes(elem.id)} key={elem.id} {...elem}/>
                 )}
             </ul>
-        )
-    }
-
+        )}
+        <button className="send-invite-btn">
+          Send an invitation
+        </button>
     </>
   )
 }
